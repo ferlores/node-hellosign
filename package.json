@@ -1,0 +1,25 @@
+{
+  "name": "hellosign-api",
+  "version": "0.0.0",
+  "description": "API wrapper for hellosign.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha -t 10000 --reporter spec test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "some"
+  },
+  "keywords": [
+    "API",
+    "hellosign"
+  ],
+  "author": "Fernando Lores <ferlores@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "request": "~2.11.4"
+  },
+  "devDependencies": {
+    "mocha": "~1.6.0"
+  }
+}
