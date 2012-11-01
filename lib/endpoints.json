@@ -1,13 +1,13 @@
 [{
   "name": "getAccount"
-, "method": "GET"
+, "method": "get"
 , "url": "/account"
 },{
   "name": "updateAccount"
-, "method": "POST"
+, "method": "post"
 , "url": "/account"
 },{
   "name": "createAccount"
-, "method": "POST"
+, "method": "post"
 , "url": "/account/create"
 }]
