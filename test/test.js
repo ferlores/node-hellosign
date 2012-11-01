@@ -1,5 +1,7 @@
 var mocha = require('mocha')
   , assert = require('assert')
+  , fs = require('fs')
+  , path = require('path')
   , HelloSign = require('../index.js')
   , username = process.env['USERNAME']
   , password = process.env['PASSWORD']
@@ -35,6 +37,46 @@ describe('Account', function(){
           assert.equal(body.error.error_name, 'bad_request')
           done()
       })      
+    })
+  })
+})
+
+describe('Signature Request', function(){
+  var request_id
+
+  describe('create request', function(){
+    it('should return current user email', function(done){
+      var options = {
+        'signers[0][name]': 'Test User'
+      , 'signers[0][email_address]': username
+      , 'file[1]': fs.createReadStream(path.join(__dirname, 'test.pdf'))
+      }
+
+      api.createRequest(options, function (er, body) {
+        assert.equal(body.signature_request.signatures[0].signer_email_address, username)
+        request_id = body.signature_request.signature_request_id
+        done()
+      })
+    })
+  })
+  describe('list requests', function(){
+    it('should return the list with the request created in the previous test', function(done){
+      api.listRequests(function (er, body) {
+        var found = false
+        body.signature_requests.forEach(function (signature) {
+          found = found || signature.signature_request_id === request_id
+        })
+        assert.ok(found)
+        done()
+      })
+    })
+  })
+  describe('get request', function(){
+    it('should return the request created in the previous test', function(done){
+      api.getRequest({id: request_id}, function (er, body) {
+        assert.equal(body.signature_request.signature_request_id, request_id)
+        done()
+      })
     })
   })
 })
