@@ -1,15 +1,18 @@
 var mocha = require('mocha')
   , assert = require('assert')
   , HelloSign = require('../index.js')
-  , keys = require('./keys.json')
-  , api = new HelloSign(keys)
-
+  , username = process.env['USERNAME']
+  , password = process.env['PASSWORD']
+  , api = new HelloSign({
+    username: username
+  , password: password
+  })
 
 describe('Account', function(){
   describe('getAccount', function(){
     it('should return current user email', function(done){
       api.getAccount(function (er, body) {
-        assert.equal(body.account.email_address, keys.username)
+        assert.equal(body.account.email_address, username)
         done()
       })      
     })
@@ -26,7 +29,7 @@ describe('Account', function(){
   describe('createAccount', function(){
     it('should return a bad request', function(done){
       api.createAccount({
-          email_address: keys.username
+          email_address: username
         , password: 'xxxxxx'
         }, function (er, body) {
           assert.equal(body.error.error_name, 'bad_request')
