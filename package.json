@@ -4,7 +4,7 @@
   "description": "API wrapper for hellosign.com",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha -t 10000 --reporter spec test/test.js"
+    "test": "node_modules/.bin/mocha -t 20000 --reporter spec test/test.js"
   },
   "repository": {
     "type": "git",
