@@ -21,5 +21,5 @@
 },{
   "name": "getRequest"
 , "method": "get"
-, "url": "/signature_request/"
+, "url": "/signature_request/{signature_request_id}"
 }]

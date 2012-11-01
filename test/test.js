@@ -73,7 +73,7 @@ describe('Signature Request', function(){
   })
   describe('get request', function(){
     it('should return the request created in the previous test', function(done){
-      api.getRequest({id: request_id}, function (er, body) {
+      api.getRequest({signature_request_id: request_id}, function (er, body) {
         assert.equal(body.signature_request.signature_request_id, request_id)
         done()
       })
