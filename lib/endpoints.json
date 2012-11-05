@@ -34,4 +34,40 @@
   "name": "cancelRequest",
   "method": "post",
   "url": "/signature_request/cancel/{signature_request_id}"
+},{
+  "name": "listForms",
+  "method": "get",
+  "url": "/reusable_form/list"
+},{
+  "name": "getForm",
+  "method": "get",
+  "url": "/reusable_form/{reusable_form_id}"
+},{
+  "name": "addUserForm",
+  "method": "post",
+  "url": "/reusable_form/add_user/{reusable_form_id}"
+},{
+  "name": "removeUserForm",
+  "method": "post",
+  "url": "/reusable_form/add_user/{reusable_form_id}"
+},{
+  "name": "addUserForm",
+  "method": "post",
+  "url": "/reusable_form/add_user/{reusable_form_id}"
+},{
+  "name": "createTeam",
+  "method": "post",
+  "url": "/team/create"
+},{
+  "name": "updateTeam",
+  "method": "post",
+  "url": "/team"
+},{
+  "name": "getTeam",
+  "method": "get",
+  "url": "/team"
+},{
+  "name": "destroyTeam",
+  "method": "post",
+  "url": "/team/destroy"
 }]

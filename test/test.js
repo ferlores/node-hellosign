@@ -113,3 +113,88 @@ describe('Signature Request', function(){
     it('should be tested')
   })
 })
+
+describe('Teams', function(){
+  var teamName = 'testTeam'
+
+  describe('create team', function(){
+    it('should return the info about the team', function(done){
+      api.createTeam({name: teamName}, function (er, body) {
+        assert.equal(body.team.name, teamName)
+        done()
+      })
+    })
+  })
+  describe('update team', function(){
+    it('should return the info about the team', function(done){
+      teamName = 'testTeam2'
+      api.updateTeam({name: teamName}, function (er, body) {
+        assert.equal(body.team.name, teamName)
+        done()
+      })
+    })
+  })
+  describe('get team', function(){
+    it('should return the info about the team', function(done){
+      api.getTeam(function (er, body) {
+        assert.equal(body.team.name, teamName)
+        done()
+      })
+    })
+  })
+})
+
+describe('Reusable Forms', function(){
+  var form_id
+
+  describe('get forms list', function(){
+    it('should return at least one reusable form', function(done){
+      api.listForms(function (er, body) {
+        assert.ok(body.reusable_forms[0])
+        form_id = body.reusable_forms[0].reusable_form_id
+        done()
+      })
+    })
+  })
+  describe('get reusable form', function(){
+    it('should return the reusable form', function(done){
+      api.getForm({reusable_form_id: form_id}, function (er, body) {
+        assert.equal(body.reusable_form.reusable_form_id, form_id)
+        done()
+      })
+    })
+  })
+  describe('add user to reusable form', function(){
+    it('should return the reusable form', function(done){
+      api.addUserForm({
+        reusable_form_id: form_id,
+        email_address: username
+      }, function (er, body) {
+        assert.equal(body.reusable_form.reusable_form_id, form_id)
+        done()
+      })
+    })
+  })
+  describe('remove user from reusable form', function(){
+    it('should return the reusable form', function(done){
+      api.removeUserForm({
+        reusable_form_id: form_id,
+        email_address: username
+      }, function (er, body) {
+        assert.equal(body.reusable_form.reusable_form_id, form_id)
+        done()
+      })
+    })
+  })
+})
+
+describe('Teams', function(){
+  describe('destroy the team', function(){
+    it('should return undefined', function(done){
+      api.destroyTeam(function (er, body) {
+        assert.ok(!body)
+        done()
+      })
+    })
+  })
+})
