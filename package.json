@@ -1,5 +1,5 @@
 {
-  "name": "hellosign-api",
+  "name": "node-hellosign",
   "version": "0.0.1",
   "description": "API wrapper for hellosign.com",
   "main": "index.js",

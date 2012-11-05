@@ -57,7 +57,7 @@ Check http://www.hellosign.com/api/reference
 * ```getForm(cb)```: Gets a ReusableForm which includes a list of Accounts that can access it.
 * ```listForms(cb)```: Lists your ReusableForms.
 * ```addUserForm(opts, cb)```: Gives the specified Account access to the specified ReusableForm.
-* ```removeUserForm```: Removes the specified Account's access to the specified ReusableForm.
+* ```removeUserForm(opts, cb)```: Removes the specified Account's access to the specified ReusableForm.
 
 ### Teams
 * ```getTeam(cb)```: Gets your Team and a list of its members
