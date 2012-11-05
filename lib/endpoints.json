@@ -55,10 +55,6 @@
   "method": "post",
   "url": "/reusable_form/add_user/{reusable_form_id}"
 },{
-  "name": "addUserForm",
-  "method": "post",
-  "url": "/reusable_form/add_user/{reusable_form_id}"
-},{
   "name": "createTeam",
   "method": "post",
   "url": "/team/create"
