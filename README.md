@@ -34,7 +34,7 @@ api.createRequest(options, function (er, res) {
 
 ## Callbacks and streaming
 
-```
+```javascript
 var stream = api.getFinalCopy({signature_request_id: id}, function (er, file) {
   process(file)  // process the hole file at the en of teh response
 })
