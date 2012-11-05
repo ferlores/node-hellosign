@@ -211,7 +211,7 @@ describe('Signature Request', function(){
       , 'reusable_form_id': form_id
       }
 
-      api.sendReusableForm(options, function (er, body) {
+      api.sendForm(options, function (er, body) {
         assert.equal(body.signature_request.signatures[0].signer_email_address, username)
         done()
       })

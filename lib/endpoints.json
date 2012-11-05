@@ -35,7 +35,7 @@
   "method": "post",
   "url": "/signature_request/cancel/{signature_request_id}"
 },{
-  "name": "sendReusableForm",
+  "name": "sendForm",
   "method": "post",
   "url": "/signature_request/send_with_reusable_form"
 },{
