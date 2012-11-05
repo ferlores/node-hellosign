@@ -79,4 +79,34 @@ describe('Signature Request', function(){
       })
     })
   })
+  describe('send reminder', function(){
+    it('should return ok', function(done){
+      api.sendReminder({
+        signature_request_id: request_id,
+        email_address: username
+      }, function (er, body) {
+        assert.equal(body.signature_request.signature_request_id, request_id)
+        assert.ok(!body.signature_request.has_error)
+        done()
+      })
+    })
+  })
+  describe('get final copy', function(){
+    it('should return forbidden (not complete)', function(done){
+      api.getFinalCopy({signature_request_id: request_id}, function (er, body) {
+        assert.equal(body.error.error_msg, 'Not allowed (not complete)')
+        assert.equal(body.error.error_name, 'forbidden')
+        done()
+      })
+    })
+  })
+  describe('cancel the request', function(){
+    it('should return undefined', function(done){
+      api.cancelRequest({signature_request_id: request_id}, function (er, body) {
+        console.log(body)
+        assert.ok(!body)
+        done()
+      })
+    })
+  })
 })

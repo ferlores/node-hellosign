@@ -1,25 +1,37 @@
 [{
-  "name": "getAccount"
-, "method": "get"
-, "url": "/account"
+  "name": "getAccount",
+  "method": "get",
+  "url": "/account"
 },{
-  "name": "updateAccount"
-, "method": "post"
-, "url": "/account"
+  "name": "updateAccount",
+  "method": "post",
+  "url": "/account"
 },{
-  "name": "createAccount"
-, "method": "post"
-, "url": "/account/create"
+  "name": "createAccount",
+  "method": "post",
+  "url": "/account/create"
 },{
-  "name": "createRequest"
-, "method": "post"
-, "url": "/signature_request/send"
+  "name": "createRequest",
+  "method": "post",
+  "url": "/signature_request/send"
 },{
-  "name": "listRequests"
-, "method": "get"
-, "url": "/signature_request/list"
+  "name": "listRequests",
+  "method": "get",
+  "url": "/signature_request/list"
 },{
   "name": "getRequest"
 , "method": "get"
 , "url": "/signature_request/{signature_request_id}"
+},{
+  "name": "sendReminder",
+  "method": "post",
+  "url": "/signature_request/remind/{signature_request_id}"
+},{
+  "name": "getFinalCopy",
+  "method": "get",
+  "url": "/signature_request/final_copy/{signature_request_id}"
+},{
+  "name": "cancelRequest",
+  "method": "post",
+  "url": "/signature_request/cancel/{signature_request_id}"
 }]
