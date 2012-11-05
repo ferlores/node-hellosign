@@ -103,14 +103,10 @@ describe('Signature Request', function(){
   describe('cancel the request', function(){
     it('should return undefined', function(done){
       api.cancelRequest({signature_request_id: request_id}, function (er, body) {
-        console.log(body)
         assert.ok(!body)
         done()
       })
     })
-  })
-  describe('send request with reusable form', function(){
-    it('should be tested')
   })
 })
 
@@ -142,10 +138,28 @@ describe('Teams', function(){
       })
     })
   })
+  describe('remove member', function(){
+    it('should return error: user cannot be removed', function(done){
+      api.removeMember({email_address: username}, function (er, body) {
+        assert.equal(body.error.error_msg, 'Team owner cannot be removed, you must delete your team instead')
+        assert.equal(body.error.error_name, 'bad_request')
+        done()
+      })
+    })
+  })
+  describe('add member', function(){
+    it('should return error: account already in the team', function(done){
+      api.addMember({email_address: username}, function (er, body) {
+        assert.equal(body.error.error_msg, 'This account is already on your team')
+        assert.equal(body.error.error_name, 'team_invite_failed')
+        done()
+      })
+    })
+  })
 })
 
+var form_id
 describe('Reusable Forms', function(){
-  var form_id
 
   describe('get forms list', function(){
     it('should return at least one reusable form', function(done){
@@ -188,11 +202,40 @@ describe('Reusable Forms', function(){
   })
 })
 
+describe('Signature Request', function(){
+  describe('send request with reusable form', function(){
+    it('should return a request', function (done) {
+      var options = {
+        'signers[client][name]': 'Test User'
+      , 'signers[client][email_address]': username
+      , 'reusable_form_id': form_id
+      }
+
+      api.sendReusableForm(options, function (er, body) {
+        assert.equal(body.signature_request.signatures[0].signer_email_address, username)
+        done()
+      })
+    })
+  })
+})
+
 describe('Teams', function(){
   describe('destroy the team', function(){
     it('should return undefined', function(done){
       api.destroyTeam(function (er, body) {
         assert.ok(!body)
+        done()
+      })
+    })
+  })
+})
+
+describe('Unclaimed Draft', function(){
+  describe('create unclaimed draft', function(){
+    it('should return an url', function(done){
+      var opts = {'file[1]': fs.createReadStream(path.join(__dirname, 'test.pdf'))}
+      api.createUnclaimedDraft(opts , function (er, body) {
+        assert.ok(body.unclaimed_draft)
         done()
       })
     })

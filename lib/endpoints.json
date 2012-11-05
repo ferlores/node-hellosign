@@ -35,6 +35,10 @@
   "method": "post",
   "url": "/signature_request/cancel/{signature_request_id}"
 },{
+  "name": "sendReusableForm",
+  "method": "post",
+  "url": "/signature_request/send_with_reusable_form"
+},{
   "name": "listForms",
   "method": "get",
   "url": "/reusable_form/list"
@@ -70,4 +74,16 @@
   "name": "destroyTeam",
   "method": "post",
   "url": "/team/destroy"
+},{
+  "name": "addMember",
+  "method": "post",
+  "url": "/team/add_member"
+},{
+  "name": "removeMember",
+  "method": "post",
+  "url": "/team/remove_member"
+},{
+  "name": "createUnclaimedDraft",
+  "method": "post",
+  "url": "/unclaimed_draft/create"
 }]
