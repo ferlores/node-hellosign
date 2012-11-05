@@ -32,6 +32,24 @@ api.createRequest(options, function (er, res) {
 })
 ```
 
+## Callbacks and streaming
+
+```
+var stream = api.getFinalCopy({signature_request_id: id}, function (er, file) {
+  process(file)  // process the hole file at the en of teh response
+})
+
+// process the chunks as they arrive
+var file
+stream.on('data', function (chunk) {
+  file += chunk
+})
+
+stream.on('end', function () {
+  console.log(file.length)
+})
+```
+
 ## Methods
 All the methods receive two params:
 * ```options``` _(optional)_: an object with the parameters of the request. Check [here](http://www.hellosign.com/api/reference) how is this object depending on the request
